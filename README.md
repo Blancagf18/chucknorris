@@ -1,0 +1,2 @@
+# chucknorris
+ejercicio ib
