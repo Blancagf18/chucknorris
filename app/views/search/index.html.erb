@@ -5,4 +5,12 @@
   </div>
   
   <%= f.submit "Buscar" %>
+
+
+<h1>Chiste de Chuck Norris</h1>
+
+<p><%= @joke %></p>
+
+<%= button_to "Otro chiste", "/search", method: :get %>
+
 <% end %>
