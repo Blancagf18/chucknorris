@@ -1,0 +1,8 @@
+<%= form_with url: search_path, method: :get, local: true do |f| %>
+  <div class="form-group">
+    <%= f.label :query, "Buscar chistes de Chuck Norris" %>
+    <%= f.text_field :query, class: "form-control", placeholder: "Ingresa tu búsqueda" %>
+  </div>
+  
+  <%= f.submit "Buscar" %>
+<% end %>
