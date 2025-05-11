@@ -1,16 +1,27 @@
-<%= form_with url: search_path, method: :get, local: true do |f| %>
-  <div class="form-group">
-    <%= f.label :query, "Buscar chistes de Chuck Norris" %>
-    <%= f.text_field :query, class: "form-control", placeholder: "Ingresa tu búsqueda" %>
-  </div>
-  
-  <%= f.submit "Buscar" %>
+<h1>Chuck Norris Jokes</h1>
 
+<% if @joke %>
+  <p><strong>Chiste:</strong> <%= @joke %></p>
+<% end %>
 
-<h1>Chiste de Chuck Norris</h1>
+<hr>
 
-<p><%= @joke %></p>
+<h2>Chiste aleatorio</h2>
+<%= button_to "Otro chiste aleatorio", search_index_path(random: true), method: :get%>
+<hr>
 
-<%= button_to "Otro chiste", "/search", method: :get %>
+<h2>Chiste por categoría</h2>
+<%= form_with url: search_index_path, method: :get, local: true do %>
+  <%= label_tag :category, "Categoría:" %>
+  <%= select_tag :category, options_for_select(["animal", "career", "celebrity", "dev", "explicit", "fashion", "food", "history", "money", "movie", "music", "political", "religion", "science", "sport", "travel"]) %>
+  <%= submit_tag "Buscar por categoría"%>
+<% end %>
 
+<hr>
+
+<h2>Buscar chiste por texto</h2>
+<%= form_with url: search_index_path, method: :get, local: true do %>
+  <%= label_tag :query, "Buscar texto:" %>
+  <%= text_field_tag :query %>
+  <%= submit_tag "Buscar"%>
 <% end %>

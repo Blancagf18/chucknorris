@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: "search#index"
 
   # Ruta para la acción search#index
-  get "search", to: "search#index"
+  get "search", to: "search#index", as: "search_index"
 
   # Otras rutas
   get "up" => "rails/health#show", as: :rails_health_check
