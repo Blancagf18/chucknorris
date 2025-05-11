@@ -13,7 +13,7 @@
 <h2>Chiste por categoría</h2>
 <%= form_with url: search_index_path, method: :get, local: true do %>
   <%= label_tag :category, "Categoría:" %>
-  <%= select_tag :category, options_for_select(["animal", "career", "celebrity", "dev", "explicit", "fashion", "food", "history", "money", "movie", "music", "political", "religion", "science", "sport", "travel"]) %>
+  <%= select_tag :category, options_for_select(@categories, params[:category]) %>
   <%= submit_tag "Buscar por categoría"%>
 <% end %>
 

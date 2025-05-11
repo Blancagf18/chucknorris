@@ -1,28 +1,25 @@
 class SearchController < ApplicationController
   def index
-    uri = URI("https://api.chucknorris.io/jokes/")
-    @random = "random"
-    @category = "random?category=#{params[:category]}"
-    @query = "search?query={query}"
-    response = Net::HTTP.get(uri)
+    categories_uri = URI("https://api.chucknorris.io/jokes/categories")
+    @categories = JSON.parse(Net::HTTP.get(categories_uri))
 
     if params[:random]
-      uri = URI("https://api.chucknorris.io/jokes/#{@random}")
-      response = Net::HTTP.get(uri)
-      @joke = JSON.parse(response)["value"]
-    elsif params[:category]
-      uri = URI("https://api.chucknorris.io/jokes/#{@category}")
-      response = Net::HTTP.get(uri)
-      @joke = JSON.parse(response)["value"]
-    elsif params[:query]
-      uri = URI("https://api.chucknorris.io/jokes/#{@query}")
-      response = Net::HTTP.get(uri)
-      @joke = JSON.parse(response)["value"]
+      uri = URI("https://api.chucknorris.io/jokes/random")
+    elsif params[:category].present?
+      uri = URI("https://api.chucknorris.io/jokes/random?category=#{params[:category]}")
+    elsif params[:query].present?
+      uri = URI("https://api.chucknorris.io/jokes/search?query=#{params[:query]}")
+    else
+      uri = URI("https://api.chucknorris.io/jokes/random")
     end
-  end
 
-  private
-  def search_params
-    params.permit(:category, :query, :random)
+    response = Net::HTTP.get(uri)
+    data = JSON.parse(response)
+
+    if data["result"]
+      @joke = data["result"].sample["value"]
+    else
+      @joke = data["value"]
+    end
   end
 end
