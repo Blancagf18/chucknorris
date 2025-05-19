@@ -1,0 +1,13 @@
+es:
+  chuck_norris_jokes: "Chistes de Chuck Norris"
+  search_results: "Resultados de búsqueda"
+  joke: "Chiste"
+  random_joke: "Chiste aleatorio"
+  another_random_joke: "Otro chiste aleatorio"
+  category_joke: "Chiste por categoría"
+  select_category: "Categoría:"
+  search_by_category: "Buscar por categoría"
+  search_joke: "Buscar chiste por texto"
+  search_text: "Buscar texto:"
+  search: "Buscar"
+  search_results: "Resultados de búsqueda"

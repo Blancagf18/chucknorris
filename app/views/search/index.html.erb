@@ -1,36 +1,40 @@
-<h1>Chuck Norris Jokes</h1>
+<h1><%= t('chuck_norris_jokes') %></h1>
 
 <% if @paginated_jokes.present? %>
-  <h2>Resultados de búsqueda:</h2>
+  <h2><%= t('search_results') %>:</h2>
   <ul>
     <% @paginated_jokes.each do |joke| %>
       <li><%= joke["value"] %></li>
     <% end %>
   </ul>
-
   <%= paginate @paginated_jokes %>
 <% elsif @joke %>
-  <p><strong>Chiste:</strong> <%= @joke %></p>
+  <p><strong><%= t('joke') %>:</strong> <%= @joke %></p>
 <% end %>
 
 <hr>
 
-<h2>Chiste aleatorio</h2>
-<%= button_to "Otro chiste aleatorio", search_index_path(random: true), method: :get%>
+<h2><%= t('random_joke') %></h2>
+<%= button_to t('another_random_joke'), search_index_path(random: true), method: :get %>
+
 <hr>
 
-<h2>Chiste por categoría</h2>
+<h2><%= t('category_joke') %></h2>
 <%= form_with url: search_index_path, method: :get, local: true do %>
-  <%= label_tag :category, "Categoría:" %>
+  <%= label_tag :category, t('select_category') %>
   <%= select_tag :category, options_for_select(@categories, params[:category]) %>
-  <%= submit_tag "Buscar por categoría"%>
+  <%= submit_tag t('search_by_category') %>
 <% end %>
 
 <hr>
 
-<h2>Buscar chiste por texto</h2>
+<h2><%= t('search_joke') %></h2>
 <%= form_with url: search_index_path, method: :get, local: true do %>
-  <%= label_tag :query, "Buscar texto:" %>
-  <%= text_field_tag :query %>
-  <%= submit_tag "Buscar"%>
+  <%= label_tag :query, t('search_text') %>
+  <%= text_field_tag :query, params[:query] %>
+  <%= submit_tag t('search') %>
 <% end %>
+
+<hr>
+
+<p><%= link_to "Español", url_for(locale: 'es') %> | <%= link_to "English", url_for(locale: 'en') %></p>
