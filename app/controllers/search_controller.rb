@@ -16,8 +16,10 @@ class SearchController < ApplicationController
     response = Net::HTTP.get(uri)
     data = JSON.parse(response)
 
+
     if data["result"]
-      @joke = data["result"].sample["value"]
+      jokes_array = data["result"]
+      @paginated_jokes = Kaminari.paginate_array(jokes_array).page(params[:page]).per(5)
     else
       @joke = data["value"]
     end

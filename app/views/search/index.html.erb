@@ -1,6 +1,15 @@
 <h1>Chuck Norris Jokes</h1>
 
-<% if @joke %>
+<% if @paginated_jokes.present? %>
+  <h2>Resultados de búsqueda:</h2>
+  <ul>
+    <% @paginated_jokes.each do |joke| %>
+      <li><%= joke["value"] %></li>
+    <% end %>
+  </ul>
+
+  <%= paginate @paginated_jokes %>
+<% elsif @joke %>
   <p><strong>Chiste:</strong> <%= @joke %></p>
 <% end %>
 
