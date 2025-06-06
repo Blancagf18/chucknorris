@@ -1,0 +1,11 @@
+<h1>Resultados de búsqueda para: <%= @query %></h1>
+
+<% if @results.present? %>
+  <ul>
+    <% @results.each do |joke| %>
+      <li><%= joke["value"] %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No se encontraron resultados para tu búsqueda.</p>
+<% end %>

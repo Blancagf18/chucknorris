@@ -11,3 +11,5 @@ en:
   search_text: "Search Text:"
   search: "Search"
   search_results: "Search Results"
+  email_optional: "Do you want to receive the results by email? (optional)"
+  sent: "The results have been sent to your email."

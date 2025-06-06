@@ -11,3 +11,5 @@ es:
   search_text: "Buscar texto:"
   search: "Buscar"
   search_results: "Resultados de búsqueda"
+  email_optional: "¿Quieres recibir los resultados por correo? (opcional)"
+  sent: "Los resultados han sido enviados a tu correo."
